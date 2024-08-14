@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <title></title>
+        <style>
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: space-around;
+                background-color: aqua;
+            }
+
+            li {
+                flex: 1;
+            }
+
+            li a {
+                text-decoration: none;
+                padding: 14px 16px;
+                text-align: center;
+                display: block;
+                color: black;
+            }
+
+            .flex {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-wrap: wrap;
+            }
+
+            .flex img {
+                max-width: 100%;
+                height: auto;
+                margin: 10px;
+            }
+
+            @media screen and (max-width: 600px) {
+                ul {
+                    flex-direction: row;
+                    align-items: center;
+                }
+
+                li {
+                    width: 100%;
+                }
+
+                img {
+                    width: 100%;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">Login</a></li>
+            <li><a href="">Register</a></li>
+            <li><a href="">Products</a></li>
+        </ul>
+        <img src="images/c1.jpeg" alt="" width="100%">
+        <center>
+            <h3>Products</h3>
+            <div class="flex">
+               <img src="images/t1.jpeg" alt="Product 1">
+               <img src="images/t2.jpeg" alt="Product 2">
+               <img src="images/t3.jpeg" alt="Product 3">
+            </div>
+
+        </center>
+    </body>
+</html>
