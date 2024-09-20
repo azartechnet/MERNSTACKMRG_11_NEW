@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let n=153;
+        let s=0;
+        let temp=n;
+
+        while(n>0)
+    {
+        let rem=n%10;
+        s=s+rem*rem*rem;
+        n=Math.floor(n/10);
+
+    }
+    if(s==temp)
+    {
+        document.write( temp+ "this is an a armstrong number")
+    }
+    else{
+        document.write( temp+ "this is not a armstrong number")
+    
+    }
+    </script>
+</body>
+</html>
