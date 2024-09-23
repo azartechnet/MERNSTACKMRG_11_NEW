@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title></title>
+        <style>
+            .example
+            {
+                color: blue;
+            }
+            #unique
+            {
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="example">First div tag</div>
+        <div id="unique">Second Element Id</div>
+        <script>
+            var firstElement=document.querySelector('.example');
+           
+            console.log("First Element:::",firstElement.textContent)
+     
+
+        var uniqueElement=document.querySelector('#unique');
+        if(uniqueElement)
+        {
+            console.log("Element with Id::",uniqueElement.textContent)
+        }
+        </script>
+    </body>
+</html>

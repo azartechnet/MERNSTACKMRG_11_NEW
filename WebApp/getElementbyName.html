@@ -1,0 +1,20 @@
+<body>
+    <form>
+        UserName<input type="text" name="username" value="azar"/>
+        FirstName<input type="text" name="u2" value="mohamed"/>
+        Password<input type="text" name="password" value="azar@123"/>
+        <textarea name="comments">Some Comments</textarea>
+        <button type="submit">Submit</button>
+    </form>
+    <script>
+          var usernameElements=document.getElementsByName('u2');
+          for(var i=0;i<usernameElements.length;i++)
+          {
+            console.log(usernameElements[i].value)
+          }
+        //   if(usernameElements.length>0)
+        //   {
+        //     usernameElements[0].value='Modified..'
+        //   }
+    </script>
+</body>
