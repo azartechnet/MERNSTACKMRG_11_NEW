@@ -1,0 +1,37 @@
+<!-- <h2 id="d1"></h2>
+<script>
+    let result="Is 123 NaN?"+isNaN(123)+"<br>"+
+    "Is 123 NaN?"+isNaN("123")+"<br>"+
+    "Is string NaN?"+isNaN("helloworld")+"<br>"
+
+    document.getElementById("d1").innerHTML=result;
+</script> -->
+<!-- <h2 id="d1"></h2>
+<script>
+    let x=10;
+    let y=20;
+    let text="x*y"
+    let result=eval(text)
+    document.getElementById("d1").innerHTML=result;
+</script> -->
+<body>
+    <button onclick="demo()">ClickHere</button>
+    <p id="d1"></p>
+    <script>
+
+        function demo()
+        {
+            var t1;
+            if(confirm("Press a button!"))
+            {
+                t1="welcome press ok button";
+            }
+            else
+            {
+                t1="Welcome press cancel button";
+            }
+            document.getElementById("d1").innerHTML=t1;
+        }
+
+    </script>
+</body>
