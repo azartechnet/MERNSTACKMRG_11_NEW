@@ -1,0 +1,60 @@
+<script>
+    //forEach
+
+    var arr = [10, 20, 30, 40, 50];
+    arr.forEach(function(item, index) {
+        console.log(item, index);
+    })
+
+    //Map
+
+    var arr = [10, 20, 30, 40, 50];
+
+     var newArr = arr.map(function(item, index) {
+        c=item * 2;
+        return c;
+     })
+     console.log(newArr); 
+
+    //flatMap
+    var arr = [1, 2, 3, 4, 5];
+    var newArr = arr.flatMap(function(item) {
+        return [item, item * 2];
+        })
+        console.log(newArr);
+    //filter
+
+    var arr = [10, 20, 30, 40, 50];
+     var newArr = arr.filter(function(item) {
+         return item > 30;
+         })
+         console.log(newArr);
+     
+    //reduce
+
+     var arr = [10, 20, 30, 40, 50];
+     var sum = arr.reduce(function(sum, item) {
+        return sum + item;
+        });
+        console.log(sum);
+    //reduceRight
+
+     var arr = [10, 20, 30, 40, 50];
+     var sum = arr.reduceRight(function(sum, item) {
+        return sum + item;
+        });
+        console.log(sum);
+    //keys
+    var obj = {
+        "name": "John",
+        "age": 30,
+        "city": "New York"
+        };
+        var keys = Object.keys(obj);
+        console.log(keys);
+        var values=Object.values(obj);
+        console.log(values);
+        var items=Object.entries(obj)
+        console.log(items);
+    
+</script>
