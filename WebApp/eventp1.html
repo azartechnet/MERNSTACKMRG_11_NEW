@@ -1,0 +1,15 @@
+<body>
+   
+    <select id="myselect" onchange="myfun()">
+        <option value="MCA">MCA</option>
+        <option value="MBA">MBA</option>
+        <option value="MS">MS</option>
+    </select>
+</body>
+<script>
+    function myfun() {
+        var x = document.getElementById("myselect").value;
+        alert(x);
+        document.write("This is function"+x)
+    }
+</script>
