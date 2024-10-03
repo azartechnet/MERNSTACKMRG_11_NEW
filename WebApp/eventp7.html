@@ -1,0 +1,33 @@
+<style>
+    #dragtarget
+    {
+        width: 200px;
+        height: 35px;
+        padding: 10px;
+        border: 1px solid black;
+    }
+</style>
+<body>
+    <p ondragstart="dragStart(event)" draggable="true" id="dragtarget">DragMe</p>
+
+    <div id="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+    </div>
+    <p id="d1">
+
+    </p>
+    <script>
+        function dragStart(event)
+        {
+            event.dataTransfer.setData("Text",event.target.id);
+        }
+        function allowDrop(event)
+        {
+            event.preventDefault();
+
+            document.getElementById("d1").innerHTML="The text is over";
+            event.target.style.border="4px dotted green";
+        }
+    </script>
+
+</body>

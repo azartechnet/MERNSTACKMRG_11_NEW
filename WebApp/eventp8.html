@@ -1,0 +1,50 @@
+<style>
+    #dragtarget {
+        width: 200px;
+        height: 35px;
+        padding: 10px;
+        border: 1px solid black;
+        background-color: lightgray;
+    }
+
+    #droptarget {
+        width: 300px;
+        height: 100px;
+        border: 2px solid black;
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+
+<body>
+    <p ondragstart="dragStart(event)" draggable="true" id="dragtarget">Drag Me</p>
+
+    <div id="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)">
+        Drop Here
+    </div>
+
+    <p id="d1"></p>
+
+    <script>
+        function dragStart(event) {
+            event.dataTransfer.setData("text", event.target.id);
+        }
+
+        function allowDrop(event) {
+            event.preventDefault();
+            document.getElementById("d1").innerHTML = "The text is over";
+            event.target.style.border = "4px dotted green";
+        }
+
+        function drop(event) {
+            event.preventDefault();
+            var data = event.dataTransfer.getData("text");
+            var draggedElement = document.getElementById(data);
+            event.target.appendChild(draggedElement);
+            document.getElementById("d1").innerHTML = "Dropped!";
+            event.target.style.border = "2px solid black";  // Reset the border
+        }
+    </script>
+</body>
