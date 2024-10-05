@@ -1,0 +1,31 @@
+<style>
+    input
+    {
+        padding:10px;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+    input:valid
+    {
+        border: 2px solid #4CAF50;
+    }
+    input:invalid
+    {
+        border: 2px solid #f00;
+    }
+    .n:optional
+    {
+         border: 2px solid blue;
+    }
+    input:required
+    {
+        background-color: aqua;
+    }
+
+</style>
+<form>
+    <input type="text"  pattern="[A-Za-z]+" required/>
+    <input type="text" class="n"/>
+    <button type="submit">ClickHere</button>
+</form>
