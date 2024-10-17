@@ -1,0 +1,7 @@
+<p id="d1"></p>
+<script>
+    const text='{"name":"azar","birth":"2024-10-17","city":"nkl"}'
+    const json = JSON.parse(text);
+    json.birth=new Date(json.birth);
+    document.getElementById("d1").innerHTML=json.birth+""+json.name;
+</script>
