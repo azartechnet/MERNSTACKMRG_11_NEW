@@ -1,0 +1,10 @@
+<p id="d1"></p>
+<script>
+    const myjson='{"name":"azar","age":34,"city":"nkl"}'
+    const myobj=JSON.parse(myjson)
+    let text="";
+    for (let key in myobj) {
+        text += key + ": " + myobj[key] + "\n";
+    }
+    document.getElementById("d1").innerHTML=text;
+</script>
