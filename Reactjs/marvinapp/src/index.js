@@ -87,7 +87,7 @@ r1.render(<MyElem1/>)*/
 //Conditional Rendering
 //Nested if else,else if ladder,switch case
 
-const x=20;
+/*const x=20;
 let text="";
 if(x>10){
     text="Greater than 10"
@@ -108,4 +108,66 @@ const MyElem1=()=>
     )
 }
 const r1=ReactDOM.createRoot(document.getElementById('root'))
-r1.render(<MyElem1/>)
+r1.render(<MyElem1/>)*/
+
+//importing css and bootstrap
+
+/*import './index.css';
+const App=()=>
+{
+    return(
+        <div>
+            <h1>Hello World</h1>
+            <button type='button' className='btn btn-primary'>ClickHere</button>
+        </div>
+    )
+
+}
+const r1=ReactDOM.createRoot(document.getElementById('root'))
+r1.render(<App/>)*/
+
+//React function Component
+
+/*function Sample()
+{
+    return(
+        <div>
+            <h1>Hello World</h1>
+        </div>
+    )
+}
+const r1=ReactDOM.createRoot(document.getElementById('root'))
+r1.render(<Sample/>)*/
+
+//class Component
+
+/*class  Sample1 extends React.Component
+{
+    render()
+    {
+        return(
+            <div>
+                <h1>This is Class Component</h1>
+            </div>
+        )
+    }
+}
+const r2=ReactDOM.createRoot(document.getElementById('root'))
+r2.render(<Sample1/>)*/
+
+//Props using function to passing arguments
+
+function Sample(props)
+{
+    return(
+        <>
+        
+        <h1>Hello {props.name}</h1>
+        <h2>{props.age}</h2>
+       </>
+        
+    )
+}
+const r1=ReactDOM.createRoot(document.getElementById('root'))
+r1.render(<Sample name="Rahul" age="34"/>)
+
