@@ -362,7 +362,7 @@ r1.render(<Sample/>)*/
 
 //React Event
 
-function Football()
+/*function Football()
 {
     const shoot=()=>{
         alert("Goal Scored")
@@ -375,6 +375,86 @@ function Football()
     )
 }
 const r1=ReactDOM.createRoot(document.getElementById('root'))
-r1.render(<Football/>)
+r1.render(<Football/>)*/
+
+//React Event Argument passing
+
+/*function Football()
+{
+    const shoot=(year)=>{
+        alert(`Goal Scored by ${year}`)
+        }
+        return(
+            <div>
+                <button  onClick={()=>shoot("2024")}>Shoot</button>
+            </div>
+            )
+}
+const r1=ReactDOM.createRoot(document.getElementById('root'))
+r1.render(<Football/>)*/
+
+//conditional Rendering
+
+/*function MissedGoal()
+{
+     return<h1>MissedGoal</h1>
+}
+function MadeGoal()
+{
+    return<h1>Goal Made</h1>
+}
+function Football(props)
+{
+     const shoot=()=>{
+        const random=Math.floor(Math.random()*2)
+        //console.log("inside")
+        
+        if(random===0)
+            {
+                 console.log("inside")
+                return <MissedGoal/>
+            }
+            else
+            {
+                return <MadeGoal/>
+             }
+              
+        }
+        return(
+            <div>
+                <button onClick={()=>shoot()}>Shoot</button>
+            </div>
+        )
+        
+        
+
+}
+const r1=ReactDOM.createRoot(document.getElementById('root'))
+r1.render(<Football/>)*/
+
+function MissedGoal()
+{
+    return<h1>Missed</h1>
+}
+function MadeGoal()
+{
+    return<h1>MadeGoal</h1>
+}
+function Football(props)
+{
+    const isGoal=props.isGoal;
+    if(isGoal)
+    {
+        return<MadeGoal/>
+    }
+    else
+    {
+        return<MissedGoal/>
+    }
+}
+
+const r1=ReactDOM.createRoot(document.getElementById('root'))
+r1.render(<Football isGoal={Math.random()>0.5}/>)
+
 
 
