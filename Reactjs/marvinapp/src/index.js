@@ -477,7 +477,7 @@ r1.render(<Garage/>)*/
 
 //React keys
 
-function Car(props)
+/*function Car(props)
 {
      return<li k={props.id}>{props.name}</li>
 }
@@ -491,7 +491,122 @@ function Garage()
     )
 }
 const r1=ReactDOM.createRoot(document.getElementById('root'))
-r1.render(<Garage/>)
+r1.render(<Garage/>)*/
+
+//React getDerivedStateFromProps
+
+/*class Header extends React.Component
+{
+    constructor(props)
+    {
+        super(props)
+        this.state={count:0};
+    }
+    static getDerivedStateFromProps(props,state)
+    {
+        console.log("getDerviedStateFromProps")
+        return{count:props.c1}
+    }
+    render()
+    {
+        return(
+            <div>
+                <p>Count:{this.state.count}</p>
+            </div>
+        )
+    }
+}
+const r1=ReactDOM.createRoot(document.getElementById('root'))
+r1.render(<Header c1="100"/>)*/
+
+//ComponentDidMount
+
+/*class Header extends React.Component
+{
+    constructor(props)
+    {
+        super(props)
+        this.state={favcolor:"red"};
+    }
+    componentDidMount()
+    {
+        console.log("componentDidMount");
+        setTimeout(()=>{
+             this.setState({favcolor:"blue"})
+        },3000)
+    }
+    render()
+    {
+        return(
+            <div>
+                <p>My fav color is {this.state.favcolor}</p>
+            </div>
+        )
+    }
+}
+const r1=ReactDOM.createRoot(document.getElementById('root'))
+r1.render(<Header/>)*/
+
+//updating getDerivedStateFromProps
+
+/*class Header extends React.Component
+{
+    constructor(props)
+    {
+        super(props);
+        this.state={favcolor:"red"};
+    }
+    static getDerivedStateFromProps(props,state)
+    {
+         console.log("getDerivedStateFromProps");
+    }
+    changeColor=()=>{
+        this.setState({favcolor:"blue"})
+    }
+    render()
+    {
+        return(
+            <div>
+                 <p>My fav color is {this.state.favcolor}</p>
+                 <button onClick={this.changeColor}>Change Color</button>
+            </div>
+        )
+    }
+}
+const r1=ReactDOM.createRoot(document.getElementById('root'))
+r1.render(<Header/>)*/
+
+//shouldComponentUpdate
+
+class Header extends React.Component
+{
+    constructor(props)
+    {
+        super(props);
+        this.state={favcolor:"red"};
+    }
+    shouldComponentUpdate(nextProps,nextState)
+    {
+        console.log("shouldComponentUpdate");
+        return nextState.favcolor!==this.state.favcolor;
+    }
+    changeColor=()=>{
+        this.setState({favcolor:"blue"})
+
+    }
+    render()
+    {
+        return(
+            <div>
+
+             <p>My fav color is{this.state.favcolor}</p>
+             <button type="button" onClick={this.changeColor}>ClickHere</button>
+            </div>
+        )
+    }
+}
+const r1=ReactDOM.createRoot(document.getElementById('root'))
+r1.render(<Header/>)
 
 
 
