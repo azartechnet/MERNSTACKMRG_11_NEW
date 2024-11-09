@@ -578,7 +578,7 @@ r1.render(<Header/>)*/
 
 //shouldComponentUpdate
 
-class Header extends React.Component
+/*class Header extends React.Component
 {
     constructor(props)
     {
@@ -606,7 +606,55 @@ class Header extends React.Component
     }
 }
 const r1=ReactDOM.createRoot(document.getElementById('root'))
-r1.render(<Header/>)
+r1.render(<Header/>)*/
+
+//React Hooks useState
+
+import { useState,useEffect } from 'react';
+
+/*function Counter()
+{
+    const[count,setCount]=useState(0);
+    const[name,setName]=useState("mohamed");
+    return(
+        <div>
+             <p>Count is {count}</p>
+             <button onClick={()=>setCount(count+1)}>Increment</button>
+             <p>My name is {name}</p>
+             <button onClick={()=>setName("Ahmed")}>Change Name</button>
+        </div>
+    )
+}
+const r1=ReactDOM.createRoot(document.getElementById('root'))
+r1.render(<Counter/>)*/
+
+//Another Example
+
+function ThemeSwitcher()
+{
+     const [isDarkMode,setIsDarkMode]=useState(false);
+
+     const toggleTheme=()=>{
+         setIsDarkMode(!isDarkMode);
+     }
+     return(
+         
+        <div style={{
+            backgroundColor:isDarkMode?"#333":"#f7f7f7",
+            color:isDarkMode?"#fff":"#333",
+            padding:20,
+            }}>
+                <h1>Theme Switcher</h1>
+                <button onClick={toggleTheme}>ClickHere</button>
+
+            </div>
+       
+
+     )
+}
+
+const r1=ReactDOM.createRoot(document.getElementById('root'))
+r1.render(<ThemeSwitcher/>)
 
 
 
