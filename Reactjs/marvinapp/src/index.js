@@ -630,7 +630,7 @@ r1.render(<Counter/>)*/
 
 //Another Example
 
-function ThemeSwitcher()
+/*function ThemeSwitcher()
 {
      const [isDarkMode,setIsDarkMode]=useState(false);
 
@@ -654,7 +654,89 @@ function ThemeSwitcher()
 }
 
 const r1=ReactDOM.createRoot(document.getElementById('root'))
-r1.render(<ThemeSwitcher/>)
+r1.render(<ThemeSwitcher/>)*/
 
+//React useEffect
+
+/*function ClickCounter()
+{
+    const [count,setCount]=useState(0)
+    useEffect(() => {
+        document.title = `Clicked ${count} times`;
+        }, [count]);
+        return(
+            <div>
+                <p>Count is {count}</p>
+                <button onClick={()=>setCount(count+1)}>Increment</button>
+            </div>
+            )
+}
+const r1=ReactDOM.createRoot(document.getElementById('root'))
+r1.render(<ClickCounter/>)*/
+
+//React using without useContext
+
+/*function Component1()
+{
+    const [user,setUser] = useState("mohamed");
+    return(
+        <div>
+            <h1>UserName is {user}</h1>
+            <button onClick={()=>setUser("mohamed2")}>Change User</button>
+            <Component2 user={user}/>
+        </div>
+    )
+}
+function Component2(props)
+{
+    return(
+        <div>
+            <h1>UserName is {props.user}</h1>
+
+        </div>
+    )
+}
+const r1=ReactDOM.createRoot(document.getElementById('root'))
+r1.render(<Component1/>)*/
+
+//React with using useContext
+
+import { useContext,createContext } from 'react';
+
+const UserContext=createContext()
+
+function Component1()
+{
+    const  [user,setUser] = useState("mohamed");
+    return(
+        <UserContext.Provider value={user}>
+
+          <h1>Component1 user name is{user}</h1>
+          <Component2/>
+        </UserContext.Provider>
+    )
+}
+function Component2()
+{
+    const user = useContext(UserContext);
+    return(
+        <div>
+            <h2>Component2 username is:{user}</h2>
+            <Component3/>
+        </div>
+    )
+}
+function Component3()
+{
+    const user = useContext(UserContext);
+    return(
+        <div>
+            <h2>Component3 username is:{user}</h2>
+           
+        </div>
+    )
+}
+const r1=ReactDOM.createRoot(document.getElementById('root'))
+r1.render(<Component1/>)
 
 
