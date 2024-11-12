@@ -701,7 +701,7 @@ r1.render(<Component1/>)*/
 
 //React with using useContext
 
-import { useContext,createContext } from 'react';
+/*import { useContext,createContext } from 'react';
 
 const UserContext=createContext()
 
@@ -737,6 +737,33 @@ function Component3()
     )
 }
 const r1=ReactDOM.createRoot(document.getElementById('root'))
-r1.render(<Component1/>)
+r1.render(<Component1/>)*/
+
+//React useRef
+
+/*import {useRef}from 'react';
+
+function FocusInput()
+{
+    const inputRef=useRef(null);
+    const handleClick=()=>{
+        inputRef.current.focus();
+    }
+    return(
+        <div>
+            <input type='text' ref={inputRef} style={{backgroundColor:'lightblue'}}/>
+            <button onClick={handleClick}>Focus Input</button>
+        </div>
+    )
+}
+const r1=ReactDOM.createRoot(document.getElementById('root'))
+r1.render(<FocusInput/>)*/
+
+import App from './App';
+
+const r1=ReactDOM.createRoot(document.getElementById('root'))
+r1.render(<App/>)
+
+
 
 
