@@ -810,7 +810,7 @@ r1.render(<TodoList/>)*/
 
 //React REST API POST using useState and useEffect
 
-function App(){
+/*function App(){
     const [user,setUser]=useState([]);
 
     useEffect(()=>{
@@ -846,7 +846,76 @@ function App(){
         );
 }
 const r1=ReactDOM.createRoot(document.getElementById('root'))
-r1.render(<App/>)
+r1.render(<App/>)*/
+
+//using userid
+
+/*function App(){
+    const [user,setUser]=useState([]);
+    const [id,setId]=useState(1);
+    
+    useEffect(()=>{
+        fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
+        .then(response=>response.json())
+        .then(data=>setUser(data))
+    })
+    return(
+        <div>
+            <h1>Users</h1>
+            <h2>{user.name}</h2>
+            <h2>{user.email}</h2>
+            <h2>{user.website}</h2>
+            <button onClick={()=>setId(id+1)}>NextUser</button>
+        </div>
+    )
+}
+const r1=ReactDOM.createRoot(document.getElementById('root'))
+r1.render(<App/>)*/
+
+//Payment gatway integration
+
+/*function Payment(){
+  return(
+    <div>
+        <h1>Payment</h1>
+        <button type='button'><a href="....">Payment</a></button>
+    </div>
+  )
+}
+const r1=ReactDOM.createRoot(document.getElementById('root'))
+r1.render(<Payment/>)*/
+
+//Weather API integration
+
+function App() {
+    const [weather, setWeather] = useState(null);
+
+    useEffect(() => {
+        fetch("https://api.open-meteo.com/v1/forecast?latitude=11.2213&longitude=78.1652&hourly=temperature_2m")
+            .then(response => response.json())
+            .then(data => setWeather(data.hourly.temperature_2m))
+            .catch(error => console.error("Error fetching weather data:", error));
+    }, []);
+
+    return (
+        <div>
+            <h1>Weather</h1>
+            {weather ? (
+                <>
+                    <h2>Temperature: {weather[0]}°C</h2>
+                    <h2>Temperature: {weather[1]}°C</h2>
+                </>
+            ) : (
+                <h2>Loading...</h2>
+            )}
+        </div>
+    );
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
+
+
 
 
 
