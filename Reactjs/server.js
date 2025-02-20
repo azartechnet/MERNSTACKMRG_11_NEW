@@ -48,6 +48,19 @@ app.post('/addpost',(req,res)=>{
     })
 })
 
+//Update Post
+
+app.put('/updatepost/:id',(req,res)=>{
+    const {id}=req.params;
+    const {title,body}=req.body;
+    let sql='update posts set title=?,body=? where id=?';
+    db.query(sql,[title,body],id,(err,result)=>{
+        if(!err)
+            res.send('post updated...')
+        else
+        res.send('post not updated...')
+    })
+})
 
 app.listen(port,()=>{
     console.log('Server started at port 3001')

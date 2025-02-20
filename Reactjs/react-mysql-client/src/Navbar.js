@@ -15,6 +15,7 @@ const NavigationBar=()=>{
                     <LinkContainer to="/create">
                      <Nav.Link>CreatePost</Nav.Link>
                     </LinkContainer>
+                    
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
