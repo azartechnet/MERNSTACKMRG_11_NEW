@@ -25,43 +25,74 @@ db.connect((err)=>{
     else
     console.log('DB not connected')
 })
-//create table
+// Create Database
+app.get('/createdb', (req, res) => {
+    let sql = 'CREATE DATABASE testdb';
+    db.query(sql, (err, result) => {
+        if (err) throw err;
+        res.send('Database created...');
+    });
+});
 
-app.get('/createtable',(req,res)=>{
-    let sql='create table posts(id int auto_increment,title varchar(100),body text,primary key(id))';
-    db.query(sql,(err,result)=>{
-        if(!err)
-            console.log('Table created')
-        else
-        console.log('Table not created')
-    })
-})
-//insert data
-app.post('/addpost',(req,res)=>{
-    let post={title:req.body.title,body:req.body.body};
-    let sql='insert into posts set ?';
-    db.query(sql,post,(err,result)=>{
-        if(!err)
-           res.send('post added...')
-        else
-           res.send('post not added...')
-    })
-})
+// Create table
+app.get('/createtable', (req, res) => {
+    let sql = 'CREATE TABLE posts(id int AUTO_INCREMENT, title VARCHAR(255), body TEXT, PRIMARY KEY(id))';
+    db.query(sql, (err, result) => {
+        if (err) throw err;
+        res.send('Posts table created...');
+    });
+});
 
-//Update Post
+// Insert post
+app.post('/addpost', (req, res) => {
+    let post = { title: req.body.title, body: req.body.body };
+    let sql = 'INSERT INTO posts SET ?';
+    db.query(sql, post, (err, result) => {
+        if (err) throw err;
+        res.send('Post added...');
+    });
+});
 
-app.put('/updatepost/:id',(req,res)=>{
-    const {id}=req.params;
-    const {title,body}=req.body;
-    let sql='update posts set title=?,body=? where id=?';
-    db.query(sql,[title,body],id,(err,result)=>{
-        if(!err)
-            res.send('post updated...')
-        else
-        res.send('post not updated...')
-    })
-})
+// Get posts
+app.get('/getposts', (req, res) => {
+    let sql = 'SELECT * FROM posts';
+    db.query(sql, (err, results) => {
+        if (err) throw err;
+        res.json(results);
+    });
+});
 
-app.listen(port,()=>{
-    console.log('Server started at port 3001')
-})
+// Get post by id
+app.get('/getpost/:id', (req, res) => {
+    let sql = `SELECT * FROM posts WHERE id = ${req.params.id}`;
+    db.query(sql, (err, result) => {
+        if (err) throw err;
+        res.json(result);
+    });
+});
+
+
+// Update post
+app.put('/updatepost/:id', (req, res) => {
+    const { id } = req.params;
+    const { title, body } = req.body;
+    const sql = `UPDATE posts SET title = ?, body = ? WHERE id = ?`;
+    db.query(sql, [title, body, id], (err, result) => {
+        if (err) throw err;
+        res.send('Post updated...');
+    });
+});
+
+// Delete post
+app.delete('/deletepost/:id', (req, res) => {
+    const { id } = req.params;
+    const sql = `DELETE FROM posts WHERE id = ?`;
+    db.query(sql, [id], (err, result) => {
+        if (err) throw err;
+        res.send('Post deleted...');
+    });
+});
+
+app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+});

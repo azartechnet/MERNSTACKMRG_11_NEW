@@ -1,41 +1,36 @@
-import React,{useState,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 
-const EditPost=()=>
-{
-    const [title,setTitle]=useState('');
-    const [body,setBody]=useState('');
-    const {id}=useParams();
-    const navigate=useNavigate();
+const EditPost = () => {
+    const [title, setTitle] = useState('');
+    const [body, setBody] = useState('');
+    const { id } = useParams();
+    const navigate = useNavigate();
 
-    useEffect(()=>{
-        const fetchPost=async()=>{
-            try
-            {
-                const res=axios.get(`http://localhost:3001/getpost/${id}`)
+    useEffect(() => {
+        const fetchPost = async () => {
+            try {
+                const res = await axios.get(`http://localhost:3001/getpost/${id}`);
                 setTitle(res.data[0].title);
                 setBody(res.data[0].body);
-            }
-            catch(err)
-            {
+            } catch (err) {
                 console.error(err);
             }
-        }
+        };
         fetchPost();
-    },[id]);
+    }, [id]);
 
-    const handleSubmit=async (e)=>{
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        try
-        {
-            await axios.put(`http://localhost:3001/updatepost/${id}`,{ title,body });
+        try {
+            await axios.put(`http://localhost:3001/updatepost/${id}`, { title, body });
             navigate('/');
-        }
-        catch(err){
+        } catch (err) {
             console.error(err);
         }
-    }
+    };
+
     return (
         <div className="container mt-5">
             <div className="row justify-content-center">
