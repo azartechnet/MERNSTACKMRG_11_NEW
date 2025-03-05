@@ -1,7 +1,7 @@
 import Home from "./Home";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter as Router,Routes,Route,Link} from 'react-router-dom';
-
+import CrudPage from './CrudPage';
 function App(){
   return ( 
       <Router>
@@ -28,7 +28,7 @@ function App(){
               </nav>
               <Routes>
                   <Route path="/" element={<Home />} />
-                  {/* <Route path="/crud" element={<CrudPage />} /> */}
+                  <Route path="/crud" element={<CrudPage />} />
               </Routes>
           </div>
       </Router>
