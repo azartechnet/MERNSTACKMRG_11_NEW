@@ -28,10 +28,14 @@ function CrudPage()
         <div className='container'>
             <h2>CRUD PAGE</h2>
             <div className='mb-3'>
-               <input type='text' className='form-control' placeholder='FoodName'required/>
+               <input type='text' className='form-control' placeholder='FoodName'required
+               onChange={(e)=>setFoodName(e.target.value)}
+               />
             </div>
             <div className='mb-3'>
-                <input type='text' className='form-control' placeholder='FoodDescription'required/>
+                <input type='text' className='form-control' placeholder='FoodDescription'required
+                onChange={(e)=>setDescription(e.target.value)}
+                />
             </div>
             <div className='mb-3'>
                 <button className='btn btn-primary' onClick={addFoodData}>AddFood</button>
