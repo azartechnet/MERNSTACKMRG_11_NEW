@@ -1,15 +1,18 @@
 import React,{useEffect,useState} from 'react'
 import Axios  from 'axios'
 
+
 function CrudPage()
 {
 
     const [foodName,setFoodName]=useState("")
     const [description,setDescription]=useState("")
+    const [foodList,setFoodList]=useState([]);
+    const [newFoodName,setNewFoodName]=useState("")
 
-    // useEffect(()=>{
-    //     fetchData();
-    // },[])
+    useEffect(()=>{
+        fetchData();
+    },[])
 
     //AddFoodData
 
@@ -23,7 +26,18 @@ function CrudPage()
                 console.log(err);
                 })
             }
-
+  //get the data
+  const fetchData=()=>{
+    Axios.get('http://localhost:3001/read').then((response)=>{
+        console.log(response.data);
+        setFoodList(response.data);
+    })
+  }
+  //update
+  const updateFood=(id)=>{
+    Axios.put('http://localhost:3001/update',{id,newFoodName})
+    .then(()=>fetchData())
+  }
     return(
         <div className='container'>
             <h2>CRUD PAGE</h2>
@@ -50,18 +64,18 @@ function CrudPage()
                </tr>
                </thead>
                <tbody>
-               <tr>
-                <td>Apple</td>
-                <td>Delicious</td>
-                <td><button className='btn btn-primary'>Edit</button></td>
-                <td><button className='btn btn-danger'>Delete</button></td>
-               </tr>
-               <tr>
-                <td>Apple</td>
-                <td>Delicious</td>
-                <td><button className='btn btn-primary'>Edit</button></td>
-                <td><button className='btn btn-danger'>Delete</button></td>
-               </tr>
+                {foodList.map((val,key)=>(
+                   <tr key={key}>
+                     <td>{val.foodName}</td>
+                     <td>{val.description}</td>
+                     <td>
+                        <input type="text" placeholder='updateFoodName' onChange={(e)=>setNewFoodName(e.target.value)}/>
+                        <button onClick={()=>updateFood(val._id)}>Edit</button>
+                     </td>
+                     <td>Delete</td>
+                   </tr>
+                ))}
+              
                </tbody>
             </table>
         </div>

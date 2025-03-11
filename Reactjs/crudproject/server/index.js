@@ -30,6 +30,40 @@ app.post("/insert",async(req,res)=>{
         res.send("Error Occured")
     }
 })
+
+//Read the data
+app.get("/read",async(req,res)=>{
+    try{
+        const food=await FoodModel.find();
+        res.send(food);
+    }
+    catch(err)
+    {
+         res.send("Error Occured")
+    }
+})
+
+//update data
+
+app.put("/update",async(req,res)=>{
+    const {newFoodName,id}=req.body;
+    try
+    {
+        const updateFood=await FoodModel.findById(id);
+        if(!updateFood)
+        {
+              return res.status(404).send("Data not updated")
+        }
+        updateFood.foodName=newFoodName;
+        await updateFood.save()
+        res.send("Data Updated SuccessFully");
+    }
+
+    catch(err)
+    {
+          console.log(err)
+    }
+})
 app.listen(3001,()=>{
     console.log("Server is running on port 3001")
 })
