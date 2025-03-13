@@ -64,6 +64,30 @@ app.put("/update",async(req,res)=>{
           console.log(err)
     }
 })
+//Deleting the data
+
+app.delete("/delete/:id", async (req, res) => {
+    const { id } = req.params; // Using object destructuring for better readability
+  
+    try {
+      // Attempt to find and remove the food item by its ID
+      const result = await FoodModel.findByIdAndDelete(id);
+  
+      if (!result) {
+        // Respond with a 404 status if the item is not found
+        return res.status(404).json({ message: "Food item not found" });
+      }
+  
+      // Respond with a success message if deletion is successful
+      res.status(200).json({ message: "Food item deleted successfully" });
+    } catch (err) {
+      console.error("Error during deletion:", err); // Log the error for debugging
+  
+      // Respond with a 500 status for server errors
+      res.status(500).json({ message: "Error deleting food item" });
+    }
+  });
+    
 app.listen(3001,()=>{
     console.log("Server is running on port 3001")
 })

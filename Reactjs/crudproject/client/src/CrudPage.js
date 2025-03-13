@@ -38,6 +38,12 @@ function CrudPage()
     Axios.put('http://localhost:3001/update',{id,newFoodName})
     .then(()=>fetchData())
   }
+
+  //delete
+  const deleteFood=(id)=>{
+    alert("Delete")
+    Axios.delete(`http://localhost:3001/delete/${id}`).then(()=>fetchData())
+  }
     return(
         <div className='container'>
             <h2>CRUD PAGE</h2>
@@ -72,7 +78,7 @@ function CrudPage()
                         <input type="text" placeholder='updateFoodName' onChange={(e)=>setNewFoodName(e.target.value)}/>
                         <button onClick={()=>updateFood(val._id)}>Edit</button>
                      </td>
-                     <td>Delete</td>
+                     <td><button onClick={()=>deleteFood(val._id)}>Delete</button></td>
                    </tr>
                 ))}
               
